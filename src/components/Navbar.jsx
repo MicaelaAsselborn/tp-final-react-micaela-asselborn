@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom"
+import logo from "../img/logo.png"
 
 function Navbar(){
     return(
         <nav>
-            <Link to="/">Inicio</Link>
-            <Link to="/listado">Listado</Link>
-            <Link to="/favoritos">Favoritos</Link>
+            <div className="contenedor-logo">
+                <img src={logo} alt="Logo" />
+                <p>PokeMarket</p>
+            </div>
+            <div className="navegador">
+                <Link to="/">Inicio</Link>
+                <Link to="/listado">Listado</Link>
+                <Link to="/carrito">Tu carrito</Link>
+            </div>
         </nav>
     )
 }

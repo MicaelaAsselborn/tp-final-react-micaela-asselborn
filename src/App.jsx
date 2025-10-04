@@ -6,7 +6,8 @@ import './App.css'
 import Home from './pages/Home'
 import Listado from './pages/Listado'
 import Perfil from './pages/Perfil'
-import Favoritos from './pages/Favoritos'
+import Carrito from './pages/Carrito'
+import Favoritos from './components/Favoritos'
 import Error from './pages/Error'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
@@ -20,7 +21,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/listado' element={<Listado />} />
         <Route path='/perfil' element={<Perfil />} />
-        <Route path='/favoritos' element={<Favoritos />} />
+        <Route path='/carrito' element={<Carrito />} />
         <Route path='*' element={<Error />} />
       </Routes>
       <Footer />

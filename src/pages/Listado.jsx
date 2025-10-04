@@ -1,6 +1,14 @@
+import PokemonList from "../components/PokemonList"
+
 function Listado(){
     return(
-        <h1>Listado</h1>
+        <main>
+            <h1>📝 Listado</h1>
+            <p>Acá podes navegar y encontrar tus pokemones favoritos.</p>
+            <div>
+                <PokemonList />
+            </div>
+        </main>
     )
 }
 

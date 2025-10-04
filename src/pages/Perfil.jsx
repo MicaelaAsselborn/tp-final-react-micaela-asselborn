@@ -1,6 +1,8 @@
 function Perfil(){
     return(
-        <h1>Perfil</h1>
+        <main>
+            <h1>Perfil</h1>
+        </main>
     )
 }
 
