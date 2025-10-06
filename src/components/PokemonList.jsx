@@ -1,20 +1,24 @@
-import { useState, useEffect } from "react";
+import {useEffect, useState} from "react";
 
 function PokemonList(){
 
-    const [pokemons, setPokemons] = useState([]);
+    const [pokemonData, setpokemonData] = useState([]);
+    const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
+
+    const fetchPokemons = async (id) =>{
+        try {
+            const response = await fetch(`${BASE_URL}${id}`);
+        const data = response.json();
+        console.log(data)
+        setpokemonData(data);
+        } catch  (error){
+            console.error("Error: ", error);
+        }
+    }
 
     useEffect(() =>{
-        const fetchPokemon = async () =>{
-            try{
-                const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=10');
-                const data = await response.json;
-            } catch(error){
-                console.error("Error: ", error)
-            }
-        };
-        fetchPokemon();
-    }, []);
+        fetchPokemons(1)
+    }, [])
 
     return
 }

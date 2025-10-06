@@ -42,6 +42,6 @@ La aplicacion se abrira en: http://localhost:5173
 ## 💻 Tecnologías
 
 - **Frontend:** React 18 + Vite
-- **Estilos:** Bootstrap 5 + CSS
+- **Estilos:** Bootstrap 5 + FontAwesome + CSS
 - **Routing:** React Router DOM
 - **Control de versiones:** Git + GitHub
