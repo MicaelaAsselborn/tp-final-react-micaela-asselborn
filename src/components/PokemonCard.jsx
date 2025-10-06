@@ -6,10 +6,10 @@ function PokemonCard({pokemonData}){
         
     }
     return(
-        <div className="card">
+        <div className="card text-center">
             <img src={pokemonData.sprites.front_default} className="card-img-top" alt={pokemonData.name} />
             <div className="card-body">
-                <h5 className="card-title">{pokemonData.name}</h5>
+                <h2 className="card-title">{pokemonData.name}</h2>
                 <p className="card-text">ID: {pokemonData.id}</p>
                 <a href="#" className="btn btn-primary">Detalles</a>
             </div>

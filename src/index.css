@@ -37,6 +37,7 @@ nav{
   font-size: 2rem;
   border-bottom: 1px solid aliceblue;
   background-color: #242424;
+  z-index: 1;
 }
 
 .menu-desplegado{
@@ -122,6 +123,14 @@ h1 {
 
 .card{
   width: 18rem;
+  z-index: 0;
+}
+
+.contenedor{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 button {
