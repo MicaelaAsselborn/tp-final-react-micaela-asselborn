@@ -95,6 +95,8 @@ nav{
   display: none;
 }
 
+/* BODY */
+
 body {
   padding: 0;
   margin: 0;
@@ -124,6 +126,11 @@ h1 {
 .card{
   width: 18rem;
   z-index: 0;
+  background-color: #1a1a1a;
+  color: #f9f9f9;
+}
+.card:hover{
+  transform: translateY(-5px);
 }
 
 .contenedor{
@@ -131,6 +138,18 @@ h1 {
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+.corazon{
+  margin-left: auto;
+  padding: 10px 10px 0 0;
+  transform: scale(2);
+}
+.red{
+  color: rgb(230, 74, 74);
+}
+.white{
+  color: whitesmoke;
 }
 
 button {
@@ -144,26 +163,21 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* LINKS */
+
+a{
+  color: rgb(230, 74, 74);
 }
+a:hover{
+  color: rgb(250, 131, 131);
+}
+
+/* FOOTER */
 
 footer{
   padding-top: 1rem;

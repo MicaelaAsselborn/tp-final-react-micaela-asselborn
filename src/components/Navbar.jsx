@@ -22,8 +22,10 @@ function Navbar(){
     return(
         <nav>
             <div className="contenedor-logo">
-                <img src={logo} alt="Logo" />
-                <p>PokeMarket</p>
+                <Link to="/">
+                    <img src={logo} alt="Logo"/>
+                    <p>PokeMarket</p>
+                </Link>
             </div>
             <div className={`desktop ${IsOpen? "menu-desplegado" : "menu-cerrado"}`}>
                 <Link to="/" onClick={closeMenu}>Inicio</Link>
