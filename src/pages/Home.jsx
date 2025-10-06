@@ -9,7 +9,6 @@ function Home(){
                 <p>¡No te preocupes más!</p>
                 <p>En el Mercado Negro Pokemon del Equipo Rocket y Asociados puedes encontrar y adquirir facilmente todos los pokemons que necesites sin esfuerzo alguno por un módico precio.</p>
             </section>
-            <hr/>
             <section>
                 <h2>La sección de favoritos ❤</h2>
                 <p>¿No estas seguro de que comprar entre tan maravillosa colección? ¡Agrega los que más te gustan a favoritos para que puedas encontrarlos facilmente después!</p>

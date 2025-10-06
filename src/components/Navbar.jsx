@@ -13,7 +13,10 @@ function Navbar(){
 
     const toggleMenu = () => {
         setIsOpen(!IsOpen);
-        
+    }
+
+    const closeMenu = () => {
+        setIsOpen(false);
     }
 
     return(
@@ -23,9 +26,9 @@ function Navbar(){
                 <p>PokeMarket</p>
             </div>
             <div className={`desktop ${IsOpen? "menu-desplegado" : "menu-cerrado"}`}>
-                <Link to="/">Inicio</Link>
-                <Link to="/listado">Listado</Link>
-                <Link to="/carrito">Tu carrito</Link>
+                <Link to="/" onClick={closeMenu}>Inicio</Link>
+                <Link to="/listado" onClick={closeMenu}>Listado</Link>
+                <Link to="/carrito" onClick={closeMenu}>Tu carrito</Link>
             </div>
             <FontAwesomeIcon icon={IsOpen? faXmark : faBars} onClick={toggleMenu} className="mobile"/>
         </nav>
