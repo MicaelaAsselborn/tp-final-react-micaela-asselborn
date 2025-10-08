@@ -10,15 +10,30 @@ function Perfil() {
 
   return (
     <main>
-      <h1 className="capitalizado">{pokemonData.name}</h1>
-      <img
-        className="img-fluid"
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`}
-        alt={pokemonName}
-      />
       <Link to="/listado">
-        <button className="btn btn-primary rojo">Atrás</button>
+        <div className="alineado-izquierdo">
+          <button className="btn btn-primary rojo">← Volver al listado</button>
+        </div>
       </Link>
+      <div>
+        <h1 className="capitalizado">{pokemonData.name}</h1>
+        <div>
+          <img
+            className="img-fluid"
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`}
+            alt={pokemonName}
+          />
+          <div>
+            <h2>Información</h2>
+            <div>
+              <h3>Estadisticas</h3>
+            </div>
+            <div>
+              <h3>Tipo</h3>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }

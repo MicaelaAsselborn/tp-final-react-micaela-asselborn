@@ -177,6 +177,16 @@ h1 {
   justify-content: space-around;
 }
 
+.alineado-izquierdo {
+  padding-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  .alineado-izquierdo {
+    display: flex;
+    justify-content: left;
+  }
+}
+
 .padding-bottom {
   margin-bottom: 2rem;
 }

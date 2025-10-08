@@ -16,7 +16,7 @@ function PokemonCard({ pokemonData }) {
     return <h1>Cargando Pokemón...</h1>;
   }
 
-  const id = pokemonData.url.split("/")[6];
+  const id = pokemonData.id || pokemonData.url?.split("/")[6];
 
   return (
     <div className="card text-center">

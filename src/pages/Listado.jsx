@@ -44,7 +44,7 @@ function Listado() {
   return (
     <main>
       <h1>📝 Poke Oferta</h1>
-      <p>Acá podes navegar y encontrar tus pokemones favoritos.</p>
+      <p>{`Navega entre ${lista.length} pokemones y encuentra a tus favoritos.`}</p>
       <Buscador />
       {cargando && <p>Cargando pokémones...</p>}
       {error && <p>Error: {error}</p>}
