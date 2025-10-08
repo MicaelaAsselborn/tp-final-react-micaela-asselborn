@@ -1,9 +1,18 @@
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  empezarCarga,
+  cargaExitosa,
+  cargaFallida,
+  agregarPokemones,
+} from "../store/pokemon";
+
 import PokemonCard from "../components/PokemonCard";
 import Buscador from "../components/Buscador";
 
 function Listado() {
-  const [pokemonData, setpokemonData] = useState([]);
+  const { lista, cargando, error } = useSelector((state) => state.pokemon);
+  const dispatch = useDispatch();
 
   const [offset, setoffset] = useState(0);
 
@@ -14,14 +23,19 @@ function Listado() {
   useEffect(() => {
     const fetchPokemons = async () => {
       try {
+        dispatch(empezarCarga());
         const response = await fetch(
           `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`
         );
         const data = await response.json();
-        console.log(data.results);
-        setpokemonData((prev) => [...prev, ...data.results]);
+
+        if (offset === 0) {
+          dispatch(cargaExitosa(data.results));
+        } else {
+          dispatch(agregarPokemones(data.results));
+        }
       } catch (error) {
-        console.error("Error: ", error);
+        dispatch(cargaFallida(error.message));
       }
     };
     fetchPokemons();
@@ -32,15 +46,16 @@ function Listado() {
       <h1>📝 Poke Oferta</h1>
       <p>Acá podes navegar y encontrar tus pokemones favoritos.</p>
       <Buscador />
+      {cargando && <p>Cargando pokémones...</p>}
+      {error && <p>Error: {error}</p>}
       <div className="row padding-bottom">
         <div className="contenedor">
-          {pokemonData.length &&
-            pokemonData.map((pokemon) => {
-              return <PokemonCard key={pokemon.name} pokemonData={pokemon} />;
-            })}
+          {lista.map((pokemon) => {
+            return <PokemonCard key={pokemon.name} pokemonData={pokemon} />;
+          })}
         </div>
       </div>
-      <button className="btn btn-primary" onClick={cargarMas}>
+      <button className="btn btn-primary rojo" onClick={cargarMas}>
         Cargar más
       </button>
     </main>

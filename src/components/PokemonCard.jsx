@@ -2,8 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function PokemonCard({ pokemonData }) {
+  const { lista } = useSelector((state) => state.pokemon);
+
   const [favorite, setfavorite] = useState(false);
   const isFavorite = () => {
     setfavorite(!favorite);
@@ -17,23 +20,25 @@ function PokemonCard({ pokemonData }) {
 
   return (
     <div className="card text-center">
-      <FontAwesomeIcon
-        icon={faHeart}
-        className={`corazon ${favorite ? "red" : "white"}`}
-        onClick={isFavorite}
-      />
       <img
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
         className="card-img-top"
-        alt={pokemonData.name}
+        alt={lista.name}
       />
       <div className="card-body">
-        <h2 className="card-title capitalizado">{pokemonData.name}</h2>
-        <p className="card-text">ID: {id}</p>
+        <h2 className="card-title capitalizado">{lista.name}</h2>
+        <p className="card-text">ID: #{id}</p>
         <p>Tipos:</p>
-        <Link to="/perfil">
-          <button className="btn btn-primary">Detalles</button>
-        </Link>
+        <div className="contenedor centrado">
+          <Link to={`/perfil/${pokemonData.name}`}>
+            <button className="btn btn-primary rojo">Detalles</button>
+          </Link>
+          <FontAwesomeIcon
+            icon={faHeart}
+            className={`corazon ${favorite ? "red" : "white"}`}
+            onClick={isFavorite}
+          />
+        </div>
       </div>
     </div>
   );
