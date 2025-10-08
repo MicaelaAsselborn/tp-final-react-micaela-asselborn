@@ -26,9 +26,8 @@ function PokemonCard({ pokemonData }) {
         alt={lista.name}
       />
       <div className="card-body">
-        <h2 className="card-title capitalizado">{lista.name}</h2>
+        <h2 className="card-title capitalizado">{pokemonData.name}</h2>
         <p className="card-text">ID: #{id}</p>
-        <p>Tipos:</p>
         <div className="contenedor centrado">
           <Link to={`/perfil/${pokemonData.name}/${id}`}>
             <button className="btn btn-primary rojo">Detalles</button>
