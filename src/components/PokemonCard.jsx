@@ -30,7 +30,7 @@ function PokemonCard({ pokemonData }) {
         <p className="card-text">ID: #{id}</p>
         <p>Tipos:</p>
         <div className="contenedor centrado">
-          <Link to={`/perfil/${pokemonData.name}`}>
+          <Link to={`/perfil/${pokemonData.name}/${id}`}>
             <button className="btn btn-primary rojo">Detalles</button>
           </Link>
           <FontAwesomeIcon

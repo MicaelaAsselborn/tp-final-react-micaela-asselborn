@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/listado" element={<Listado />} />
-        <Route path="/perfil/:pokemonName" element={<Perfil />} />
+        <Route path="/perfil/:pokemonName/:pokemonId" element={<Perfil />} />
         <Route path="/carrito" element={<Carrito />} />
         <Route path="/info" element={<Info />} />
         <Route path="*" element={<Error />} />
