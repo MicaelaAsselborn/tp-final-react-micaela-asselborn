@@ -22,7 +22,7 @@ function Navbar(){
     return(
         <nav>
             <div className="contenedor-logo">
-                <Link to="/">
+                <Link to="/" onClick={closeMenu}>
                     <img src={logo} alt="Logo"/>
                     <p>PokeMarket</p>
                 </Link>

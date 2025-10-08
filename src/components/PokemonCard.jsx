@@ -10,17 +10,19 @@ function PokemonCard({pokemonData}){
     }
 
     if(!pokemonData){
-        console.log('pokemonData:', pokemonData); // ← Agrega esto
-        console.log('sprites:', pokemonData?.sprites); // ← Y esto
         return(<h1>Cargando Pokemón...</h1>)
     }
+
+    const idImg = pokemonData.url.split("/")[6];
+
     return(
         <div className="card text-center">
             <FontAwesomeIcon icon={faHeart} className={`corazon ${favorite? "red": "white"}`} onClick={isFavorite}/>
-            <img src={pokemonData.sprites.front_default} className="card-img-top" alt={pokemonData.name} />
+            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idImg}.png`} className="card-img-top" alt={pokemonData.name} />
             <div className="card-body">
                 <h2 className="card-title">{pokemonData.name}</h2>
                 <p className="card-text">ID: {pokemonData.id}</p>
+                <p>Tipos:</p>
                 <a href="#" className="btn btn-primary">Detalles</a>
             </div>
         </div>
