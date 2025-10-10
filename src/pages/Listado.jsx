@@ -78,7 +78,12 @@ function Listado() {
       <div className="row margin-Y">
         <div className="contenedor">
           {lista.map((pokemon) => {
-            return <PokemonCard key={pokemon.name} pokemonData={pokemon} />;
+            return (
+              <PokemonCard
+                key={`${pokemon.name}-${pokemon.id}`}
+                pokemonData={pokemon}
+              />
+            );
           })}
         </div>
       </div>

@@ -9,11 +9,15 @@ function PokemonCard({ pokemonData }) {
   const id = pokemonData.url?.split("/")[6];
 
   const { favoritos } = useSelector((state) => state.pokemon);
-  const esFavorito = favoritos.includes(id);
+  const esFavorito = favoritos.some((fav) => fav.id == id);
 
   const dispatch = useDispatch();
   const handleFavoritos = () => {
-    dispatch(toggleFavoritos(id));
+    const pokemonId = {
+      ...pokemonData,
+      id: id,
+    };
+    dispatch(toggleFavoritos(pokemonId));
   };
 
   const [buying, setBuying] = useState(false);

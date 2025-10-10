@@ -36,11 +36,13 @@ const pokemonSlice = createSlice({
             state.paginaActual = action.payload
         },
         toggleFavoritos: (state, action) =>{
-            const pokemonId = action.payload;
-            if (state.favoritos.includes(pokemonId)) {
-                state.favoritos = state.favoritos.filter(id => id !== pokemonId);
+            const pokemon = action.payload;
+            state.favoritos = state.favoritos.filter(fav => fav.id);
+            const esFavorito = state.favoritos.some(fav => fav.id === pokemon.id);
+            if (esFavorito) {
+                state.favoritos = state.favoritos.filter(fav => fav.id !== pokemon.id);
             } else {
-                state.favoritos.push(pokemonId);
+                state.favoritos.push(pokemon);
             }
             localStorage.setItem('pokemonesFavoritos', JSON.stringify(state.favoritos));
         }
