@@ -127,6 +127,12 @@ main p {
   font-size: 1.5rem;
 }
 
+section {
+  border-bottom: 1px solid #fff;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+
 .capitalizado {
   text-transform: capitalize;
 }
@@ -134,6 +140,7 @@ main p {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  padding-bottom: 1rem;
 }
 
 .card {
@@ -245,6 +252,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  padding: 1rem 0;
 }
 .paginacion p {
   margin: 0;

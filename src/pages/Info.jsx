@@ -1,7 +1,7 @@
 function Info() {
   return (
     <main>
-      <h1>📚Info</h1>
+      <h1>📚 PokeMarket - Trabajo Práctico Final React</h1>
       <p>
         Este es un proyecto evaluativo creado por Micaela Asselborn para la
         clase de Desarrollo Web FrontEnd - UTN.
