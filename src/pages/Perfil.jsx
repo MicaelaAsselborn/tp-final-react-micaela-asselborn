@@ -59,44 +59,48 @@ function Perfil() {
         </div>
       </Link>
       <div>
-        <h1 className="capitalizado">{pokemonData.name}</h1>
-        <div>
-          <img
-            className="img-fluid"
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`}
-            alt={pokemonName}
-          />
-          <p>
-            Precio: ₽
-            {pokemonData?.stats?.[0]?.base_stat
-              ? Number(pokemonData.stats[0].base_stat) * 1000
-              : "Cargando..."}
-          </p>
-          <div className="contenedor">
-            <button className="hover-red">❤ Favoritos</button>
-            <button className="hover-green">🛒 Comprar</button>
-          </div>
-          <div className="row contenedor">
-            <h2>Información</h2>
-            <div className="card centered">
-              <h3 className="card-title">Tipos</h3>
-              {pokemonData?.types.map((type) => (
-                <div
-                  key={type.type.name}
-                  className={`tipo ${tipos.get(type.type.name)}`}
-                >
-                  {tipos.get(type.type.name)}
-                </div>
-              ))}
+        <h1 className="capitalizado titulo-responsive">{pokemonData.name}</h1>
+        <div className="contenedor-responsive">
+          <div>
+            <img
+              className="img-fluid"
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`}
+              alt={pokemonName}
+            />
+            <p>
+              Precio: ₽
+              {pokemonData?.stats?.[0]?.base_stat
+                ? Number(pokemonData.stats[0].base_stat) * 1000
+                : "Cargando..."}
+            </p>
+            <div className="contenedor">
+              <button className="hover-red">❤ Favoritos</button>
+              <button className="hover-green">🛒 Comprar</button>
             </div>
-            <div className="card">
-              <h3 className="card-title">Estadisticas</h3>
-              <p>HP: {pokemonData?.stats[0].base_stat}</p>
-              <p>Ataque: {pokemonData?.stats[1].base_stat}</p>
-              <p>Defensa: {pokemonData?.stats[2].base_stat}</p>
-              <p>Ataque especial: {pokemonData?.stats[3].base_stat}</p>
-              <p>Defensa especial: {pokemonData?.stats[4].base_stat}</p>
-              <p>Velocidad: {pokemonData?.stats[5].base_stat}</p>
+          </div>
+          <div>
+            <div className="row contenedor">
+              <h2>Información</h2>
+              <div className="card centered">
+                <h3 className="card-title">Tipos</h3>
+                {pokemonData?.types.map((type) => (
+                  <div
+                    key={type.type.name}
+                    className={`tipo ${tipos.get(type.type.name)}`}
+                  >
+                    {tipos.get(type.type.name)}
+                  </div>
+                ))}
+              </div>
+              <div className="card">
+                <h3 className="card-title">Estadisticas</h3>
+                <p>HP: {pokemonData?.stats[0].base_stat}</p>
+                <p>Ataque: {pokemonData?.stats[1].base_stat}</p>
+                <p>Defensa: {pokemonData?.stats[2].base_stat}</p>
+                <p>Ataque especial: {pokemonData?.stats[3].base_stat}</p>
+                <p>Defensa especial: {pokemonData?.stats[4].base_stat}</p>
+                <p>Velocidad: {pokemonData?.stats[5].base_stat}</p>
+              </div>
             </div>
           </div>
         </div>

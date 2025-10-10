@@ -141,6 +141,7 @@ h1 {
   z-index: 0;
   background-color: #1a1a1a;
   color: #f9f9f9;
+  padding: 1rem 0;
 }
 .card-hover:hover {
   transform: translateY(-10px);
@@ -174,6 +175,16 @@ h1 {
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+@media (min-width: 1440px) {
+  .contenedor-responsive {
+    display: flex;
+  }
+  .titulo-responsive {
+    font-size: 6rem;
+    padding-bottom: 2rem;
+  }
 }
 
 .centrado {
