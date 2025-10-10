@@ -2,23 +2,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { toggleFavoritos } from "../store/pokemon";
+import { useFavoritos } from "../hooks/useFavoritos";
 
 function PokemonCard({ pokemonData }) {
   const id = pokemonData.url?.split("/")[6];
 
-  const { favoritos } = useSelector((state) => state.pokemon);
-  const esFavorito = favoritos.some((fav) => fav.id == id);
-
-  const dispatch = useDispatch();
-  const handleFavoritos = () => {
-    const pokemonId = {
-      ...pokemonData,
-      id: id,
-    };
-    dispatch(toggleFavoritos(pokemonId));
-  };
+  const { handleFavoritos, esFavorito } = useFavoritos();
 
   const [buying, setBuying] = useState(false);
   const isBuying = () => {
@@ -51,8 +40,8 @@ function PokemonCard({ pokemonData }) {
           />
           <FontAwesomeIcon
             icon={faHeart}
-            className={`icono ${esFavorito ? "red" : "white"}`}
-            onClick={handleFavoritos}
+            className={`icono ${esFavorito(id) ? "red" : "white"}`}
+            onClick={() => handleFavoritos(pokemonData)}
           />
         </div>
       </div>

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useFavoritos } from "../hooks/useFavoritos";
 
 function Perfil() {
   const [pokemonData, setPokemonData] = useState(undefined);
-
   const { pokemonName, pokemonId } = useParams();
+  const { handleFavoritos, esFavorito } = useFavoritos();
 
   useEffect(() => {
     const pokeApi = async () => {
@@ -59,7 +60,7 @@ function Perfil() {
         </div>
       </Link>
       <div>
-        <h1 className="capitalizado titulo-responsive">{pokemonData.name}</h1>
+        <h1 className="capitalizado titulo-responsive">{`#${pokemonId} ${pokemonData.name}`}</h1>
         <div className="contenedor-responsive">
           <div>
             <img
@@ -74,7 +75,19 @@ function Perfil() {
                 : "Cargando..."}
             </p>
             <div className="contenedor">
-              <button className="hover-red">❤ Favoritos</button>
+              <button
+                className="hover-red"
+                onClick={() => {
+                  const pokemonSimple = {
+                    name: pokemonData.name,
+                    url: `https://pokeapi.co/api/v2/pokemon/${pokemonId}/`,
+                    id: pokemonId,
+                  };
+                  handleFavoritos(pokemonSimple);
+                }}
+              >
+                {esFavorito(pokemonId) ? "💔 Quitar" : "❤ Favoritos"}
+              </button>
               <button className="hover-green">🛒 Comprar</button>
             </div>
           </div>
