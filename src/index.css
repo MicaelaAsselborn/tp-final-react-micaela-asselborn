@@ -141,7 +141,8 @@ h1 {
   z-index: 0;
   background-color: #1a1a1a;
   color: #f9f9f9;
-  padding: 1rem 0;
+  padding: 0 0 1rem 0;
+  border-radius: 10px;
 }
 .card-hover:hover {
   transform: translateY(-10px);
@@ -152,6 +153,22 @@ h1 {
     transition: all 0.5s ease;
     z-index: 1;
   }
+}
+
+.titulo {
+  background-color: var(--rojo);
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 10px 10px 0 0;
+}
+
+.alineado {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+.alineado p {
+  font-weight: bold;
 }
 
 .rojo {
@@ -221,10 +238,6 @@ h1 {
 }
 .white {
   color: whitesmoke;
-}
-
-h3 {
-  text-decoration: underline;
 }
 
 button {

@@ -82,7 +82,7 @@ function Perfil() {
             <div className="row contenedor">
               <h2>Información</h2>
               <div className="card centered">
-                <h3 className="card-title">Tipos</h3>
+                <h3 className="titulo">Tipos</h3>
                 {pokemonData?.types.map((type) => (
                   <div
                     key={type.type.name}
@@ -93,13 +93,31 @@ function Perfil() {
                 ))}
               </div>
               <div className="card">
-                <h3 className="card-title">Estadisticas</h3>
-                <p>HP: {pokemonData?.stats[0].base_stat}</p>
-                <p>Ataque: {pokemonData?.stats[1].base_stat}</p>
-                <p>Defensa: {pokemonData?.stats[2].base_stat}</p>
-                <p>Ataque especial: {pokemonData?.stats[3].base_stat}</p>
-                <p>Defensa especial: {pokemonData?.stats[4].base_stat}</p>
-                <p>Velocidad: {pokemonData?.stats[5].base_stat}</p>
+                <h3 className="titulo">Estadisticas</h3>
+                <div className="alineado">
+                  <p>HP:</p>
+                  <p>{pokemonData?.stats[0].base_stat}</p>
+                </div>
+                <div className="alineado">
+                  <p>Ataque:</p>
+                  <p>{pokemonData?.stats[1].base_stat}</p>
+                </div>
+                <div className="alineado">
+                  <p>Defensa:</p>
+                  <p>{pokemonData?.stats[2].base_stat}</p>
+                </div>
+                <div className="alineado">
+                  <p>Ataque especial:</p>
+                  <p>{pokemonData?.stats[3].base_stat}</p>
+                </div>
+                <div className="alineado">
+                  <p>Defensa especial:</p>
+                  <p>{pokemonData?.stats[4].base_stat}</p>
+                </div>
+                <div className="alineado">
+                  <p>Velocidad:</p>
+                  <p>{pokemonData?.stats[5].base_stat}</p>
+                </div>
               </div>
             </div>
           </div>
