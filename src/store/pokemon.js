@@ -5,7 +5,7 @@ const initialState = {
     cargando: false,
     error: null,
     paginaActual: 1,
-    favoritos: []
+    favoritos: JSON.parse(localStorage.getItem('pokemonesFavoritos')) || []
 };
 
 const pokemonSlice = createSlice({
@@ -42,6 +42,7 @@ const pokemonSlice = createSlice({
             } else {
                 state.favoritos.push(pokemonId);
             }
+            localStorage.setItem('pokemonesFavoritos', JSON.stringify(state.favoritos));
         }
     }
 });
