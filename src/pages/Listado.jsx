@@ -59,7 +59,23 @@ function Listado() {
       {cargando && <p>Cargando pokémones...</p>}
       {error && <p>Error: {error}</p>}
 
-      <div className="row padding-bottom">
+      <div className="paginacion">
+        <button
+          className="btn btn-primary rojo"
+          onClick={irAPaginaAnterior}
+          disabled={paginaActual === 1}
+        >
+          ← Anterior
+        </button>
+
+        <p>Página {paginaActual}</p>
+
+        <button className="btn btn-primary rojo" onClick={irAPaginaSiguiente}>
+          Siguiente →
+        </button>
+      </div>
+
+      <div className="row margin-Y">
         <div className="contenedor">
           {lista.map((pokemon) => {
             return <PokemonCard key={pokemon.name} pokemonData={pokemon} />;

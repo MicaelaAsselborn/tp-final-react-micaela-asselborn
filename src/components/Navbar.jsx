@@ -33,7 +33,9 @@ function Navbar() {
         <Link to="/carrito" onClick={closeMenu}>
           🛒Carrito
         </Link>
-        <Link to="/info">📚Info</Link>
+        <Link to="/info" onClick={closeMenu}>
+          📚Info
+        </Link>
       </div>
       <FontAwesomeIcon
         icon={IsOpen ? faXmark : faBars}

@@ -2,14 +2,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleFavoritos } from "../store/pokemon";
 
 function PokemonCard({ pokemonData }) {
-  const { lista } = useSelector((state) => state.pokemon);
+  const id = pokemonData.url?.split("/")[6];
 
-  const [favorite, setfavorite] = useState(false);
-  const isFavorite = () => {
-    setfavorite(!favorite);
+  const { favoritos } = useSelector((state) => state.pokemon);
+  const esFavorito = favoritos.includes(id);
+
+  const dispatch = useDispatch();
+  const handleFavoritos = () => {
+    dispatch(toggleFavoritos(id));
   };
 
   const [buying, setBuying] = useState(false);
@@ -21,14 +25,12 @@ function PokemonCard({ pokemonData }) {
     return <h1>Cargando Pokemón...</h1>;
   }
 
-  const id = pokemonData.id || pokemonData.url?.split("/")[6];
-
   return (
     <div className="card card-hover text-center">
       <img
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
         className="card-img-top"
-        alt={lista.name}
+        alt={pokemonData.name}
       />
       <div className="card-body">
         <h2 className="card-title capitalizado">{pokemonData.name}</h2>
@@ -45,8 +47,8 @@ function PokemonCard({ pokemonData }) {
           />
           <FontAwesomeIcon
             icon={faHeart}
-            className={`icono ${favorite ? "red" : "white"}`}
-            onClick={isFavorite}
+            className={`icono ${esFavorito ? "red" : "white"}`}
+            onClick={handleFavoritos}
           />
         </div>
       </div>

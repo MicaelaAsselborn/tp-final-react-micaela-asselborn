@@ -4,7 +4,8 @@ const initialState = {
     lista: [],
     cargando: false,
     error: null,
-    paginaActual: 1
+    paginaActual: 1,
+    favoritos: []
 };
 
 const pokemonSlice = createSlice({
@@ -33,10 +34,18 @@ const pokemonSlice = createSlice({
         },
         cambiarPagina: (state, action)=>{
             state.paginaActual = action.payload
+        },
+        toggleFavoritos: (state, action) =>{
+            const pokemonId = action.payload;
+            if (state.favoritos.includes(pokemonId)) {
+                state.favoritos = state.favoritos.filter(id => id !== pokemonId);
+            } else {
+                state.favoritos.push(pokemonId);
+            }
         }
     }
 });
 
-export const {empezarCarga, cargaExitosa, cargaFallida, agregarPokemones, resetearPokemones, cambiarPagina} = pokemonSlice.actions;
+export const {empezarCarga, cargaExitosa, cargaFallida, agregarPokemones, resetearPokemones, cambiarPagina, toggleFavoritos} = pokemonSlice.actions;
 
 export default pokemonSlice.reducer
