@@ -31,7 +31,7 @@ function Navbar() {
           📝Listado
         </Link>
         <Link to="/carrito" onClick={closeMenu}>
-          🛒Tu carrito
+          🛒Carrito
         </Link>
         <Link to="/info">📚Info</Link>
       </div>

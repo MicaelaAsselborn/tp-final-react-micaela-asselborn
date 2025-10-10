@@ -175,6 +175,7 @@ h1 {
   background-color: var(--rojo);
   border-color: rgb(255, 255, 255);
 }
+.rojo:disabled,
 .rojo:hover,
 .rojo:active,
 .rojo:focus-visible,
@@ -194,7 +195,7 @@ h1 {
   gap: 1rem;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .contenedor-responsive {
     display: flex;
   }
@@ -238,6 +239,15 @@ h1 {
 }
 .white {
   color: whitesmoke;
+}
+
+.paginacion {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.paginacion p {
+  margin: 0;
 }
 
 button {

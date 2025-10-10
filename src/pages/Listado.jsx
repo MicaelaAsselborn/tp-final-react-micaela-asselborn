@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   empezarCarga,
@@ -6,40 +6,50 @@ import {
   cargaFallida,
   agregarPokemones,
   resetearPokemones,
+  cambiarPagina,
 } from "../store/pokemon";
 
 import PokemonCard from "../components/PokemonCard";
 
 function Listado() {
-  const { lista, cargando, error } = useSelector((state) => state.pokemon);
+  const { lista, cargando, error, paginaActual } = useSelector(
+    (state) => state.pokemon
+  );
   const dispatch = useDispatch();
 
-  const [offset, setOffset] = useState(0);
-
-  const cargarMas = () => {
-    setOffset((prevOffset) => prevOffset + 50);
-  };
+  const pokemonesPorPagina = 20;
 
   useEffect(() => {
     const fetchPokemons = async () => {
       try {
         dispatch(empezarCarga());
-        if (offset === 0) {
-          dispatch(resetearPokemones());
-        }
+        dispatch(resetearPokemones());
+
+        const offset = (paginaActual - 1) * pokemonesPorPagina;
         const response = await fetch(
-          `https://pokeapi.co/api/v2/pokemon?limit=50&offset=${offset}`
+          `https://pokeapi.co/api/v2/pokemon?limit=${pokemonesPorPagina}&offset=${offset}`
         );
         const data = await response.json();
 
         dispatch(agregarPokemones(data.results));
-        dispatch(cargaExitosa(data.results));
+        dispatch(cargaExitosa());
       } catch (error) {
         dispatch(cargaFallida(error.message));
       }
     };
+
     fetchPokemons();
-  }, [offset, dispatch]);
+  }, [paginaActual, dispatch]);
+
+  const irAPaginaAnterior = () => {
+    if (paginaActual > 1) {
+      dispatch(cambiarPagina(paginaActual - 1));
+    }
+  };
+
+  const irAPaginaSiguiente = () => {
+    dispatch(cambiarPagina(paginaActual + 1));
+  };
 
   return (
     <main>
@@ -48,6 +58,7 @@ function Listado() {
 
       {cargando && <p>Cargando pokémones...</p>}
       {error && <p>Error: {error}</p>}
+
       <div className="row padding-bottom">
         <div className="contenedor">
           {lista.map((pokemon) => {
@@ -55,9 +66,22 @@ function Listado() {
           })}
         </div>
       </div>
-      <button className="btn btn-primary rojo" onClick={cargarMas}>
-        Cargar más
-      </button>
+
+      <div className="paginacion">
+        <button
+          className="btn btn-primary rojo"
+          onClick={irAPaginaAnterior}
+          disabled={paginaActual === 1}
+        >
+          ← Anterior
+        </button>
+
+        <p>Página {paginaActual}</p>
+
+        <button className="btn btn-primary rojo" onClick={irAPaginaSiguiente}>
+          Siguiente →
+        </button>
+      </div>
     </main>
   );
 }

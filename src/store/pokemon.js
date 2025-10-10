@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     lista: [],
     cargando: false,
-    error: null
+    error: null,
+    paginaActual: 1
 };
 
 const pokemonSlice = createSlice({
@@ -29,10 +30,13 @@ const pokemonSlice = createSlice({
         },
         resetearPokemones: (state) =>{
             state.lista = []
+        },
+        cambiarPagina: (state, action)=>{
+            state.paginaActual = action.payload
         }
     }
 });
 
-export const {empezarCarga, cargaExitosa, cargaFallida, agregarPokemones, resetearPokemones} = pokemonSlice.actions;
+export const {empezarCarga, cargaExitosa, cargaFallida, agregarPokemones, resetearPokemones, cambiarPagina} = pokemonSlice.actions;
 
 export default pokemonSlice.reducer
