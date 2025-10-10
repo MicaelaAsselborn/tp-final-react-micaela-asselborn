@@ -8,16 +8,15 @@ import {
 } from "../store/pokemon";
 
 import PokemonCard from "../components/PokemonCard";
-import Buscador from "../components/Buscador";
 
 function Listado() {
   const { lista, cargando, error } = useSelector((state) => state.pokemon);
   const dispatch = useDispatch();
 
-  const [offset, setoffset] = useState(0);
+  const [offset, setOffset] = useState(0);
 
   const cargarMas = () => {
-    setoffset((prevoffset) => prevoffset + 20);
+    setOffset((prevOffset) => prevOffset + 50);
   };
 
   useEffect(() => {
@@ -25,15 +24,12 @@ function Listado() {
       try {
         dispatch(empezarCarga());
         const response = await fetch(
-          `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`
+          `https://pokeapi.co/api/v2/pokemon?limit=50&offset=${offset}`
         );
         const data = await response.json();
 
-        if (offset === 0) {
-          dispatch(cargaExitosa(data.results));
-        } else {
-          dispatch(agregarPokemones(data.results));
-        }
+        dispatch(agregarPokemones(data.results));
+        dispatch(cargaExitosa(data.results));
       } catch (error) {
         dispatch(cargaFallida(error.message));
       }
@@ -44,8 +40,8 @@ function Listado() {
   return (
     <main>
       <h1>📝 Poke Oferta</h1>
-      <p>{`Navega entre ${lista.length} pokemones y encuentra a tus favoritos.`}</p>
-      <Buscador />
+      <p>{`Navega entre más de 1000 pokemones y adquiere a tus favoritos.`}</p>
+
       {cargando && <p>Cargando pokémones...</p>}
       {error && <p>Error: {error}</p>}
       <div className="row padding-bottom">

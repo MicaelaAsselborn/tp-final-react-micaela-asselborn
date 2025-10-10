@@ -15,9 +15,9 @@ const pokemonSlice = createSlice({
             state.error = null;
         },
 
-        cargaExitosa: (state, action) =>{
+        cargaExitosa: (state) =>{
             state.cargando = false;
-            state.lista = action.payload;
+            state.error = null;
         },
 
         cargaFallida: (state, action) =>{
@@ -25,7 +25,6 @@ const pokemonSlice = createSlice({
             state.error = action.payload;
         },
         agregarPokemones: (state, action) =>{
-            state.cargando = false;
             state.lista = [...state.lista, ...action.payload]
         }
     }
