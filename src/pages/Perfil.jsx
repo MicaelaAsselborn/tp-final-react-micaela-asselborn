@@ -50,8 +50,6 @@ function Perfil() {
     }
   }, [pokemonData]);
 
-  const price = Number(pokemonData?.stats[0].base_stat) * 100;
-
   if (pokemonData === undefined) return <></>;
   return (
     <main>
@@ -68,7 +66,12 @@ function Perfil() {
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`}
             alt={pokemonName}
           />
-          <p>Precio: ₽{price}</p>
+          <p>
+            Precio: ₽
+            {pokemonData?.stats?.[0]?.base_stat
+              ? Number(pokemonData.stats[0].base_stat) * 1000
+              : "Cargando..."}
+          </p>
           <div className="contenedor">
             <button className="hover-red">❤ Favoritos</button>
             <button className="hover-green">🛒 Comprar</button>
