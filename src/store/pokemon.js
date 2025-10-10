@@ -26,10 +26,13 @@ const pokemonSlice = createSlice({
         },
         agregarPokemones: (state, action) =>{
             state.lista = [...state.lista, ...action.payload]
+        },
+        resetearPokemones: (state) =>{
+            state.lista = []
         }
     }
 });
 
-export const {empezarCarga, cargaExitosa, cargaFallida, agregarPokemones} = pokemonSlice.actions;
+export const {empezarCarga, cargaExitosa, cargaFallida, agregarPokemones, resetearPokemones} = pokemonSlice.actions;
 
 export default pokemonSlice.reducer

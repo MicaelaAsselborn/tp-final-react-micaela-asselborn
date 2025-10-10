@@ -5,6 +5,7 @@ import {
   cargaExitosa,
   cargaFallida,
   agregarPokemones,
+  resetearPokemones,
 } from "../store/pokemon";
 
 import PokemonCard from "../components/PokemonCard";
@@ -23,6 +24,9 @@ function Listado() {
     const fetchPokemons = async () => {
       try {
         dispatch(empezarCarga());
+        if (offset === 0) {
+          dispatch(resetearPokemones());
+        }
         const response = await fetch(
           `https://pokeapi.co/api/v2/pokemon?limit=50&offset=${offset}`
         );
@@ -35,7 +39,7 @@ function Listado() {
       }
     };
     fetchPokemons();
-  }, [offset]);
+  }, [offset, dispatch]);
 
   return (
     <main>
