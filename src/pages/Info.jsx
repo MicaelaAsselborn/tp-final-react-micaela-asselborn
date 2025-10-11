@@ -1,7 +1,7 @@
 function Info() {
   return (
     <main>
-      <h1 className="pokemonSolid">📚 PokeMarket</h1>
+      <h1 className="pokemonSolid">PokeMarket</h1>
       <h2 className="pokemonSolid">Trabajo Práctico Final React</h2>
       <p>
         Este es un proyecto evaluativo creado por Micaela Asselborn para la

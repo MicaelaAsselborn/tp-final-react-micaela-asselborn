@@ -53,7 +53,7 @@ function Listado() {
 
   return (
     <main>
-      <h1 className="pokemonSolid">📝 Poke Oferta</h1>
+      <h1 className="pokemonSolid">Poke Oferta</h1>
       <p>{`Navega entre más de 1000 pokemones y adquiere a tus favoritos.`}</p>
 
       {cargando && <p>Cargando pokémones...</p>}

@@ -1,7 +1,7 @@
 function Carrito() {
   return (
     <main>
-      <h1 className="pokemonSolid">🛒 Carrito</h1>
+      <h1 className="pokemonSolid">Carrito</h1>
     </main>
   );
 }
