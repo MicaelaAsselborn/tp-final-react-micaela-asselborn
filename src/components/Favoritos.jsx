@@ -6,17 +6,21 @@ function Favoritos() {
 
   return (
     <>
-      <h2 className="pokemonSolid">❤ Favoritos</h2>
-      <p>¿No estas seguro de que comprar entre tan maravillosa colección?</p>
-      <p>
-        ¡Agrega los que más te gustan a favoritos para que puedas encontrarlos
-        facilmente después!
-      </p>
+      <div className="contenedor-padding">
+        <h2 className="pokemonSolid">❤ Favoritos</h2>
+        <p>¿No estas seguro de que comprar entre tan maravillosa colección?</p>
+        <p>
+          ¡Agrega los que más te gustan a favoritos para que puedas encontrarlos
+          facilmente después!
+        </p>
+      </div>
       <div>
         {favoritos.length === 0 ? (
-          <p className="grey border-top">
-            Aun no has agregado pokemones a tu lista de favoritos.
-          </p>
+          <div className="contenedor border-top">
+            <p className="grey">
+              Aun no has agregado pokemones a tu lista de favoritos.
+            </p>
+          </div>
         ) : (
           <div className="contenedor margin-Y">
             {favoritos.map((pokemon) => {

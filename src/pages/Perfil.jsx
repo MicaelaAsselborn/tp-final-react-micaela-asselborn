@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useFavoritos } from "../hooks/useFavoritos";
+import { tiposPokemon } from "../utils/tiposPokemon.js";
+import { precioPokemon } from "../utils/precioPokemon.js";
 
 function Perfil() {
   const [pokemonData, setPokemonData] = useState(undefined);
@@ -21,27 +23,6 @@ function Perfil() {
     };
     pokeApi();
   }, [pokemonName]);
-
-  const tipos = new Map();
-
-  tipos.set("steel", "Acero");
-  tipos.set("water", "Agua");
-  tipos.set("bug", "Bicho");
-  tipos.set("dragon", "Drágon");
-  tipos.set("electric", "Eléctrico");
-  tipos.set("ghost", "Fantasma");
-  tipos.set("fire", "Fuego");
-  tipos.set("fairy", "Hada");
-  tipos.set("ice", "Hielo");
-  tipos.set("fighting", "Lucha");
-  tipos.set("normal", "Normal");
-  tipos.set("grass", "Planta");
-  tipos.set("psychic", "Psíquico");
-  tipos.set("rock", "Roca");
-  tipos.set("dark", "Siniestro");
-  tipos.set("ground", "Tierra");
-  tipos.set("poison", "Veneno");
-  tipos.set("flying", "Volador");
 
   useEffect(() => {
     if (pokemonData?.cries?.latest) {
@@ -68,12 +49,9 @@ function Perfil() {
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`}
               alt={pokemonName}
             />
-            <p>
-              Precio: ₽
-              {pokemonData?.stats?.[0]?.base_stat
-                ? Number(pokemonData.stats[0].base_stat) * 1000
-                : "Cargando..."}
-            </p>
+            <p className="precio">{`Precio: ₽${precioPokemon(
+              pokemonData.name
+            )}`}</p>
             <div className="contenedor">
               <button
                 className="hover-red"
@@ -99,9 +77,9 @@ function Perfil() {
                 {pokemonData?.types.map((type) => (
                   <div
                     key={type.type.name}
-                    className={`tipo ${tipos.get(type.type.name)}`}
+                    className={`tipo ${tiposPokemon.get(type.type.name)}`}
                   >
-                    {tipos.get(type.type.name)}
+                    {tiposPokemon.get(type.type.name)}
                   </div>
                 ))}
               </div>

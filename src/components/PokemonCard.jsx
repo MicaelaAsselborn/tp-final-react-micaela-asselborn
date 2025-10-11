@@ -3,6 +3,7 @@ import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFavoritos } from "../hooks/useFavoritos";
+import { precioPokemon } from "../utils/precioPokemon";
 
 function PokemonCard({ pokemonData }) {
   const id = pokemonData.url?.split("/")[6];
@@ -28,7 +29,9 @@ function PokemonCard({ pokemonData }) {
       <div className="card-body">
         <h2 className="card-title capitalizado">{pokemonData.name}</h2>
         <p className="card-text">ID: #{id}</p>
-        <p>Precio: ₽10.000</p>
+        <p className="precio">{`Precio: ₽${precioPokemon(
+          pokemonData.name
+        )}`}</p>
         <div className="contenedor centrado">
           <Link to={`/perfil/${pokemonData.name}/${id}`}>
             <button className="btn btn-primary rojo">Detalles</button>

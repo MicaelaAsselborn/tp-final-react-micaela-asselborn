@@ -2,7 +2,7 @@ import Favoritos from "../components/Favoritos";
 
 function Home() {
   return (
-    <main>
+    <main className="paddingless-bottom">
       <section>
         <h1 className="pokemonSolid">¡Bienvenidos a PokeMarket!</h1>
         <h2 className="red">✨ Tu mercado negro Pokemón de confianza ✨</h2>
