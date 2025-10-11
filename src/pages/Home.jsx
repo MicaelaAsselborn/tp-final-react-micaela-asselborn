@@ -1,21 +1,60 @@
 import Favoritos from "../components/Favoritos";
+import ball from "../img/ball.png";
 
 function Home() {
   return (
     <main className="paddingless-bottom">
-      <section>
-        <h1 className="pokemonSolid">¡Bienvenidos a PokeMarket!</h1>
-        <h2 className="red">✨ Tu mercado negro Pokemón de confianza ✨</h2>
-        <p>¿Mala punteria?</p>
-        <p>¿Pokébolas insuficientes?</p>
-        <p>¿Pésimo atrapando pokemon?</p>
-        <p>¡No te preocupes más!</p>
+      <header>
+        <h1 className="pokemonSolid">🎪 ¡Bienvenid@s a PokeMarket!</h1>
+        <div className="subtitulo">
+          <img src={ball} alt="pokebola" />
+          <h2 className="red">
+            - La solución definitiva para Maestros Pokémon -
+          </h2>
+          <img src={ball} alt="pokebola" />
+        </div>
+      </header>
+
+      <div className="contenedor">
+        <div className="card padding">
+          <span className="emoji">🌧️</span>
+          <p>¿Pasaste horas bajo la lluvia esperando un Pikachu?</p>
+        </div>
+        <div className="card padding">
+          <span className="emoji">🍃</span>
+          <p>¿Tu último Bulbasaur usó Danza Pétalo... para huir?</p>
+        </div>
+        <div className="card padding">
+          <span className="emoji">💸</span>
+          <p>¿Gastaste tu presupuesto en Pokébolas que fallaron?</p>
+        </div>
+      </div>
+
+      <div className="contenedor">
+        <h2>¡PREPÁRATE PARA LA BATALLA... Y GÁNALA! 🏆</h2>
+
+        <div className="contenedor">
+          <div className="card padding">
+            <span className="emoji">🎯</span>
+            <h4>Pokémon listos para combatir</h4>
+          </div>
+          <div className="card padding">
+            <span className="emoji">💰</span>
+            <h4>Precios que no te harán usar Malicioso</h4>
+          </div>
+          <div className="card padding">
+            <span className="emoji">⚡</span>
+            <h4>Entrega más rápida que Ataque Rápido</h4>
+          </div>
+        </div>
+      </div>
+
+      <div className="slogan">
+        <p>¡Átrapalos a todos... sin "átraparlos"!</p>
         <p>
-          En el Mercado Negro Pokemon del Equipo Rocket y Asociados puedes
-          encontrar y adquirir facilmente todos los pokemons que necesites sin
-          esfuerzo alguno por un módico precio.
+          <i>- Team Rocket & Asociados -</i>
         </p>
-      </section>
+      </div>
       <Favoritos />
     </main>
   );

@@ -114,10 +114,11 @@ main {
   padding-bottom: 2rem;
 }
 
-section {
-  border-bottom: 1px solid #fff;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
+header {
+  height: calc(100vh - var(--altura-nav));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .card {
@@ -148,15 +149,20 @@ section {
   padding: 2rem 0;
 }
 
+.slogan {
+  display: flex;
+  flex-direction: column;
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+}
+
 /* FUENTES */
 
 .pokemonSolid {
   font-family: "pokemonSolid", sans-serif;
-  letter-spacing: 6px;
-  color: var(--rojo);
-}
-.pokemonHollow {
-  font-family: "pokemonHollow", sans-serif;
+  text-shadow: 2px 2px 0 #000;
   letter-spacing: 6px;
   color: var(--rojo);
 }
@@ -219,6 +225,10 @@ main p {
   transform: scale(2.2) translateY(-1px);
 }
 
+.emoji {
+  font-size: 3rem;
+}
+
 /* COLORES */
 
 .rojo {
@@ -264,8 +274,23 @@ main p {
   }
 }
 
+.subtitulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.subtitulo img {
+  width: 32px;
+  height: 32px;
+}
+
 .centrado {
   justify-content: space-around;
+}
+
+.padding {
+  padding: 1rem;
 }
 
 .alineado-izquierdo {

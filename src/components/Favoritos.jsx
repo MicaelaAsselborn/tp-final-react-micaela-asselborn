@@ -6,13 +6,19 @@ function Favoritos() {
 
   return (
     <>
-      <div className="contenedor-padding">
+      <div className="slogan">
         <h2 className="pokemonSolid">❤ Favoritos</h2>
-        <p>¿No estas seguro de que comprar entre tan maravillosa colección?</p>
-        <p>
-          ¡Agrega los que más te gustan a favoritos para que puedas encontrarlos
-          facilmente después!
-        </p>
+        <div className="padding">
+          <p>¿Abrumado por tanta elección? ¿No sabes por dónde empezar?</p>
+          <p>
+            ✨ ¡<strong>Marca con ❤️</strong> los Pokémon que más te gusten y
+            créa tu lista personalizada!
+          </p>
+          <p>
+            🚀 <strong>Encuéntralos al instante</strong> aqui debajo 👇🏼 cuando
+            estés listo para hacer tu pedido
+          </p>
+        </div>
       </div>
       <div>
         {favoritos.length === 0 ? (

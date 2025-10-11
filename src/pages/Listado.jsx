@@ -58,8 +58,10 @@ function Listado() {
 
   return (
     <main>
-      <h1 className="pokemonSolid">Poke Oferta</h1>
-      <p>{`Navega entre más de 1000 pokemones y adquiere a tus favoritos.`}</p>
+      <div className="padding">
+        <h1 className="pokemonSolid">Poke Oferta</h1>
+        <p>Navega entre más de 1000 pokemones y adquiere a tus favoritos.</p>
+      </div>
 
       {cargando && <p>Cargando pokémones...</p>}
       {error && <p>Error: {error}</p>}
