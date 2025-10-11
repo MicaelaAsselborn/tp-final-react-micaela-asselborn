@@ -25,9 +25,9 @@ const pokemonSlice = createSlice({
             state.favoritos = state.favoritos.filter(fav => fav && fav.id); // Limpia de la lista pokemones corruptos
             const esFavorito = state.favoritos.some(fav => fav.id === pokemon.id); //Verifica si el ID ya esta en favoritos
             if (esFavorito) {
-                state.favoritos = state.favoritos.filter(fav => fav.id !== pokemon.id); //Si ya esta, lo quita
+                state.favoritos = state.favoritos.filter(fav => fav.id !== pokemon.id); //Si ya esta, lo quita de la lista
             } else {
-                state.favoritos = [...state.favoritos, pokemon]; //Si no esta, lo agrega
+                state.favoritos = [...state.favoritos, pokemon]; //Si no esta, lo agrega a la lista
             }
             localStorage.setItem('pokemonesFavoritos', JSON.stringify(state.favoritos)); //Guarda favoritos en local.storage
         }

@@ -22,6 +22,7 @@ function Perfil() {
       }
     };
     pokeApi();
+    //Si el nombre (extraido de la url) cambia, hace un nuevo fetch
   }, [pokemonName]);
 
   useEffect(() => {
@@ -32,16 +33,21 @@ function Perfil() {
     }
   }, [pokemonData]);
 
-  if (pokemonData === undefined) return <></>;
+  if (pokemonData === undefined)
+    return (
+      <main>
+        <h1>Error al cargar: No se encontraron datos.</h1>
+      </main>
+    );
   return (
     <main>
       <Link to="/listado">
         <div className="alineado-izquierdo">
-          <button className="btn btn-primary rojo">← Volver al listado</button>
+          <button className="button">← Volver al listado</button>
         </div>
       </Link>
       <div>
-        <h1 className="capitalizado titulo-responsive pokemonSolid">{`#${pokemonId} ${pokemonData.name}`}</h1>
+        <h1 className="capitalizado titulo-responsive pokemonSolid">{`#${pokemonId} ${pokemonName}`}</h1>
         <div className="contenedor-responsive">
           <div>
             <img
@@ -49,18 +55,11 @@ function Perfil() {
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`}
               alt={pokemonName}
             />
-            <p className="precio">{`₽${precioPokemon(pokemonData.name)}`}</p>
+            <p className="precio">{`₽${precioPokemon(pokemonName)}`}</p>
             <div className="contenedor">
               <button
                 className="hover-red"
-                onClick={() => {
-                  const pokemonSimple = {
-                    name: pokemonData.name,
-                    url: `https://pokeapi.co/api/v2/pokemon/${pokemonId}/`,
-                    id: pokemonId,
-                  };
-                  handleFavoritos(pokemonSimple);
-                }}
+                onClick={() => handleFavoritos(pokemonData)}
               >
                 {esFavorito(pokemonId) ? "💔 Quitar" : "❤ Favoritos"}
               </button>
@@ -73,6 +72,8 @@ function Perfil() {
               <div className="card centered">
                 <h3 className="titulo">Tipos</h3>
                 {pokemonData?.types.map((type) => (
+                  // Hago un mapeo sobre el array types que trae pokemonData , y obtengo un string x cada uno. le doy como key su nombre, y uso un Map para asignarle una clase (value) segun el nombre del tipo(key)
+                  //Renderizo cada string
                   <div
                     key={type.type.name}
                     className={`tipo ${tiposPokemon.get(type.type.name)}`}

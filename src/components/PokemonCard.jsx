@@ -7,16 +7,18 @@ import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useFavoritos } from "../hooks/useFavoritos";
 import { precioPokemon } from "../utils/precioPokemon";
 
+//pokemonData viene desde Listado
 function PokemonCard({ pokemonData }) {
-  const id = pokemonData.id;
+  const id = pokemonData.id; //simplificó el ID
 
-  const { handleFavoritos, esFavorito } = useFavoritos();
+  const { handleFavoritos, esFavorito } = useFavoritos(); //Traigo las funciones desde el custom hook
 
   const [buying, setBuying] = useState(false);
   const isBuying = () => {
     setBuying(!buying);
   };
 
+  //Si pokemonData viene undefined, muestro un spinner
   if (!pokemonData) {
     return (
       <div className="spinner-border text-danger" role="status">
@@ -47,8 +49,10 @@ function PokemonCard({ pokemonData }) {
           />
           <FontAwesomeIcon
             icon={faHeart}
-            className={`icono ${esFavorito(id) ? "red" : "white"}`}
+            //Al clickear se ejecuta la funcion que chequea si esta o no en favoritos
             onClick={() => handleFavoritos(pokemonData)}
+            //Si el ID esta en la favoritos, el corazon es rojo, si no, es blanco
+            className={`icono ${esFavorito(id) ? "red" : "white"}`}
           />
         </div>
       </div>
