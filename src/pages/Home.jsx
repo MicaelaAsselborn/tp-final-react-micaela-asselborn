@@ -4,13 +4,11 @@ function Home() {
   return (
     <main>
       <section>
-        <h1>
-          ¡Bienvenidos a PokeMarket, tu mercado negro Pokemón de confianza!
-        </h1>
-        <p>
-          ¿Pokemones muy dificiles de atrapar? ¿No tienes suficientes pokébolas?
-          ¿Impuestos por pokémon atrapado muy altos?
-        </p>
+        <h1 className="pokemonSolid">¡Bienvenidos a PokeMarket!</h1>
+        <h2 className="red">✨ Tu mercado negro Pokemón de confianza ✨</h2>
+        <p>¿Mala punteria?</p>
+        <p>¿Pokébolas insuficientes?</p>
+        <p>¿Pésimo atrapando pokemon?</p>
         <p>¡No te preocupes más!</p>
         <p>
           En el Mercado Negro Pokemon del Equipo Rocket y Asociados puedes

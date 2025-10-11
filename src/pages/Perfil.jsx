@@ -60,7 +60,7 @@ function Perfil() {
         </div>
       </Link>
       <div>
-        <h1 className="capitalizado titulo-responsive">{`#${pokemonId} ${pokemonData.name}`}</h1>
+        <h1 className="capitalizado titulo-responsive pokemonSolid">{`#${pokemonId} ${pokemonData.name}`}</h1>
         <div className="contenedor-responsive">
           <div>
             <img

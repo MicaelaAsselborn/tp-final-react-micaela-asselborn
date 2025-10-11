@@ -1,9 +1,9 @@
-function Carrito(){
-    return(
-        <main>
-            <h1>🛒 Tu carrito</h1>
-        </main>
-    )
+function Carrito() {
+  return (
+    <main>
+      <h1 className="pokemonSolid">🛒 Carrito</h1>
+    </main>
+  );
 }
 
-export default Carrito
+export default Carrito;

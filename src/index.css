@@ -16,8 +16,15 @@
   --rojo: rgb(230, 74, 74);
 }
 
-* {
-  /* outline: 1px solid #fff; */
+.pokemonSolid {
+  font-family: "pokemonSolid", sans-serif;
+  letter-spacing: 6px;
+  color: var(--rojo);
+}
+.pokemonHollow {
+  font-family: "pokemonHollow", sans-serif;
+  letter-spacing: 6px;
+  color: var(--rojo);
 }
 
 a {
@@ -133,6 +140,11 @@ section {
   padding-bottom: 1rem;
 }
 
+.border-top {
+  border-top: 1px solid #fff;
+  padding: 2rem 0;
+}
+
 .capitalizado {
   text-transform: capitalize;
 }
@@ -246,6 +258,10 @@ h1 {
 }
 .white {
   color: whitesmoke;
+}
+
+.grey {
+  color: grey;
 }
 
 .paginacion {

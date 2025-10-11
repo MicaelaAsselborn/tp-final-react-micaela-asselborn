@@ -6,15 +6,17 @@ function Favoritos() {
 
   return (
     <>
-      <h2>❤ Mis pokemones favoritos: </h2>
+      <h2 className="pokemonSolid">❤ Favoritos</h2>
+      <p>¿No estas seguro de que comprar entre tan maravillosa colección?</p>
       <p>
-        ¿No estas seguro de que comprar entre tan maravillosa colección? ¡Agrega
-        los que más te gustan a favoritos para que puedas encontrarlos
+        ¡Agrega los que más te gustan a favoritos para que puedas encontrarlos
         facilmente después!
       </p>
       <div>
         {favoritos.length === 0 ? (
-          <p>Aun no has agregado pokemones a tu lista de favoritos.</p>
+          <p className="grey border-top">
+            Aun no has agregado pokemones a tu lista de favoritos.
+          </p>
         ) : (
           <div className="contenedor margin-Y">
             {favoritos.map((pokemon) => {
