@@ -34,7 +34,7 @@ function Navbar() {
           🛒Carrito
         </Link>
         <Link to="/info" onClick={closeMenu}>
-          📚Info
+          ⚖️Info
         </Link>
       </div>
       <FontAwesomeIcon
