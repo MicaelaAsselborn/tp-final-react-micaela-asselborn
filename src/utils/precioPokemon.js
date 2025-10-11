@@ -3,6 +3,6 @@ export function precioPokemon(nombre) {
   for (let i = 0; i < nombre.length; i++) {
     hash += nombre.charCodeAt(i);
   }
-  const precio = (hash % 1900) + 1000;
-  return precio;
+  const precio = (hash % 1900) + 10000;
+  return precio.toLocaleString('es-AR');
 }

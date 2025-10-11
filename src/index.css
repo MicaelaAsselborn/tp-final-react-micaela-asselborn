@@ -126,8 +126,8 @@ header {
   z-index: 0;
   background-color: #1a1a1a;
   color: #f9f9f9;
-  padding: 0 0 1rem 0;
   border-radius: 10px;
+  padding: 0 0 0.5rem 0;
 }
 .card-hover:hover {
   transform: translateY(-10px);
@@ -147,6 +147,13 @@ header {
   gap: 1rem;
   min-height: 5rem;
   padding: 2rem 0;
+}
+.contenedor-detalles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1rem;
 }
 
 .slogan {
@@ -204,7 +211,10 @@ main p {
 .precio {
   color: greenyellow;
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 15px;
 }
 
 .alineado {
@@ -347,6 +357,10 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.hover-green,
+.hover-red {
+  font-size: 1.2rem;
+}
 .hover-green:hover {
   border: 1px solid greenyellow;
 }
