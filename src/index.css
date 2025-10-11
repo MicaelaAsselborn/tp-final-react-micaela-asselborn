@@ -310,6 +310,13 @@ ul {
   border: 2px solid rgb(255, 255, 255);
 }
 
+btn-primary {
+  color: #fff;
+}
+btn-primary:active {
+  background-color: var(--rojo);
+}
+
 .red {
   color: var(--rojo);
 }
@@ -386,11 +393,24 @@ ul {
 .paginacion {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
   padding: 1rem 0;
 }
 .paginacion p {
   margin: 0;
+}
+.button {
+  background-color: var(--rojo);
+  color: #fff;
+  border: 1px solid whitesmoke;
+}
+.button:hover {
+  border: 2px solid white;
+  transform: scale(1.1);
+}
+.button:active {
+  border: 2px solid var(--rojo);
 }
 
 button {
@@ -403,10 +423,6 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 .hover-green,

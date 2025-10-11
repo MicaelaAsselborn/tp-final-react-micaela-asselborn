@@ -1,5 +1,6 @@
 import Favoritos from "../components/Favoritos";
 import ball from "../img/ball.png";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -55,6 +56,13 @@ function Home() {
           <i>- Team Rocket & Asociados -</i>
         </p>
       </div>
+
+      <Link to="/listado">
+        <button className="btn btn-primary rojo margin-Y">
+          🔍 Comenzar a explorar
+        </button>
+      </Link>
+
       <Favoritos />
     </main>
   );

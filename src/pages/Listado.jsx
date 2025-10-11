@@ -1,57 +1,56 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import {
-  empezarCarga,
-  cargaExitosa,
-  cargaFallida,
   agregarPokemones,
   resetearPokemones,
   cambiarPagina,
-} from "../store/Pokemon.js";
+} from "../store/pokemon.js";
+
 import PokemonCard from "../components/PokemonCard";
 
 function Listado() {
-  const { lista, cargando, error, paginaActual } = useSelector(
-    (state) => state.pokemon
-  );
+  const { lista, paginaActual } = useSelector((state) => state.pokemon); //Obtengo los valores globales de lista y pagina
   const dispatch = useDispatch();
-
   const pokemonesPorPagina = 20;
 
   useEffect(() => {
+    //Fetch para traer pokemones
     const fetchPokemons = async () => {
       try {
-        dispatch(empezarCarga());
         dispatch(resetearPokemones());
 
-        const offset = (paginaActual - 1) * pokemonesPorPagina;
+        const offset = (paginaActual - 1) * pokemonesPorPagina; //Calcula la posicion en el array desde la que comenzar a cargar pokemon
+
         const response = await fetch(
           `https://pokeapi.co/api/v2/pokemon?limit=${pokemonesPorPagina}&offset=${offset}`
         );
-        const data = await response.json();
+        const data = await response.json(); //Guarda name y url en JSON
+
+        //Hace 20 llamados en paralelo y espera que todas terminen
         const pokemonesCompletos = await Promise.all(
+          //Crea un array de 20 pokemon
           data.results.map(async (pokemon) => {
-            const response = await fetch(pokemon.url);
-            const pokemonCompleto = await response.json();
+            const response = await fetch(pokemon.url); //Trae todo el contenido de url ()
+            const pokemonCompleto = await response.json(); //Guarda los datos en JSON
             return pokemonCompleto;
           })
         );
-        dispatch(agregarPokemones(pokemonesCompletos));
-        dispatch(cargaExitosa());
+        dispatch(agregarPokemones(pokemonesCompletos)); //Guardo los datos completos en lista
       } catch (error) {
-        dispatch(cargaFallida(error.message));
+        console.log("Error:", error);
       }
     };
 
     fetchPokemons();
-  }, [paginaActual, dispatch]);
+  }, [paginaActual]); //Se ejecuta cuando cambia paginaActual
 
+  //Funciones de cambio de página
   const irAPaginaAnterior = () => {
     if (paginaActual > 1) {
       dispatch(cambiarPagina(paginaActual - 1));
     }
   };
-
   const irAPaginaSiguiente = () => {
     dispatch(cambiarPagina(paginaActual + 1));
   };
@@ -62,13 +61,9 @@ function Listado() {
         <h1 className="pokemonSolid">Poke Oferta</h1>
         <p>Navega entre más de 1000 pokemones y adquiere a tus favoritos.</p>
       </div>
-
-      {cargando && <p>Cargando pokémones...</p>}
-      {error && <p>Error: {error}</p>}
-
       <div className="paginacion">
         <button
-          className="btn btn-primary rojo"
+          className="button"
           onClick={irAPaginaAnterior}
           disabled={paginaActual === 1}
         >
@@ -77,7 +72,7 @@ function Listado() {
 
         <p>Página {paginaActual}</p>
 
-        <button className="btn btn-primary rojo" onClick={irAPaginaSiguiente}>
+        <button className="button" onClick={irAPaginaSiguiente}>
           Siguiente →
         </button>
       </div>
@@ -97,7 +92,7 @@ function Listado() {
 
       <div className="paginacion">
         <button
-          className="btn btn-primary rojo"
+          className="button"
           onClick={irAPaginaAnterior}
           disabled={paginaActual === 1}
         >
@@ -106,7 +101,7 @@ function Listado() {
 
         <p>Página {paginaActual}</p>
 
-        <button className="btn btn-primary rojo" onClick={irAPaginaSiguiente}>
+        <button className="button" onClick={irAPaginaSiguiente}>
           Siguiente →
         </button>
       </div>

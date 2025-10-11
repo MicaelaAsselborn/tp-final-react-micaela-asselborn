@@ -2,8 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     lista: [],
-    cargando: false,
-    error: null,
     paginaActual: 1,
     favoritos: JSON.parse(localStorage.getItem('pokemonesFavoritos')) || []
 };
@@ -12,43 +10,30 @@ const pokemonSlice = createSlice({
     name: "pokemon",
     initialState,
     reducers: {
-        empezarCarga: (state) =>{
-            state.cargando = true;
-            state.error = null;
-        },
-
-        cargaExitosa: (state) =>{
-            state.cargando = false;
-            state.error = null;
-        },
-
-        cargaFallida: (state, action) =>{
-            state.cargando = false;
-            state.error = action.payload;
-        },
         agregarPokemones: (state, action) =>{
-            state.lista = [...state.lista, ...action.payload]
+            state.lista = [...state.lista, ...action.payload] //Agrega un GRUPO de pokemones a la lista
         },
         resetearPokemones: (state) =>{
-            state.lista = []
+            state.lista = [] //Vacia la lista (Para que la nueva pagina este vacia)
         },
         cambiarPagina: (state, action)=>{
-            state.paginaActual = action.payload
+            state.paginaActual = action.payload //Cambia el valor de PaginaActual
         },
         toggleFavoritos: (state, action) =>{
-            const pokemon = action.payload;
-            state.favoritos = state.favoritos.filter(fav => fav && fav.id);
-            const esFavorito = state.favoritos.some(fav => fav.id === pokemon.id);
+            const pokemon = action.payload; //Objeto recibido del dispatch
+
+            state.favoritos = state.favoritos.filter(fav => fav && fav.id); // Limpia de la lista pokemones corruptos
+            const esFavorito = state.favoritos.some(fav => fav.id === pokemon.id); //Verifica si el ID ya esta en favoritos
             if (esFavorito) {
-                state.favoritos = state.favoritos.filter(fav => fav.id !== pokemon.id);
+                state.favoritos = state.favoritos.filter(fav => fav.id !== pokemon.id); //Si ya esta, lo quita
             } else {
-                state.favoritos.push(pokemon);
+                state.favoritos = [...state.favoritos, pokemon]; //Si no esta, lo agrega
             }
-            localStorage.setItem('pokemonesFavoritos', JSON.stringify(state.favoritos));
+            localStorage.setItem('pokemonesFavoritos', JSON.stringify(state.favoritos)); //Guarda favoritos en local.storage
         }
     }
 });
 
-export const {empezarCarga, cargaExitosa, cargaFallida, agregarPokemones, resetearPokemones, cambiarPagina, toggleFavoritos} = pokemonSlice.actions;
+export const {agregarPokemones, resetearPokemones, cambiarPagina, toggleFavoritos} = pokemonSlice.actions;
 
 export default pokemonSlice.reducer
