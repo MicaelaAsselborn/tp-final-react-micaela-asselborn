@@ -80,12 +80,10 @@ function Listado() {
       <div className="row margin-Y">
         <div className="contenedor">
           {lista.map((pokemon) => {
-            return (
-              <PokemonCard
-                key={`${pokemon.name}-${pokemon.id}`}
-                pokemonData={pokemon}
-              />
-            );
+            //Itero sobre cada elemento de lista con map y obtengo el objeto pokemon
+            //Por cada elemento, creo una card con los datos de cada pokemon, y le asigno una key
+            //Envio los datos del fetch a travez de pokemonData
+            return <PokemonCard key={pokemon.id} pokemonData={pokemon} />;
           })}
         </div>
       </div>

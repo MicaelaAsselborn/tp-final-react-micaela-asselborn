@@ -9,7 +9,7 @@ function Home() {
         <h1 className="pokemonSolid">🎪 ¡Bienvenid@s a PokeMarket!</h1>
         <div className="subtitulo">
           <img src={ball} alt="pokebola" />
-          <h2 className="red">
+          <h2 className="red sombra">
             - La solución definitiva para Maestros Pokémon -
           </h2>
           <img src={ball} alt="pokebola" />

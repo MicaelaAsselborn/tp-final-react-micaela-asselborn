@@ -8,7 +8,7 @@ import { useFavoritos } from "../hooks/useFavoritos";
 import { precioPokemon } from "../utils/precioPokemon";
 
 function PokemonCard({ pokemonData }) {
-  const id = pokemonData?.id;
+  const id = pokemonData.id;
 
   const { handleFavoritos, esFavorito } = useFavoritos();
 
@@ -18,7 +18,11 @@ function PokemonCard({ pokemonData }) {
   };
 
   if (!pokemonData) {
-    return <h1>Cargando Pokemón...</h1>;
+    return (
+      <div className="spinner-border text-danger" role="status">
+        <span className="visually-hidden">Cargando...</span>
+      </div>
+    );
   }
 
   return (

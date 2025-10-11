@@ -185,11 +185,18 @@ header {
 
 /* FUENTES */
 
+nav a {
+  text-shadow: 2px 2px 0 #000;
+}
+
 .pokemonSolid {
   font-family: "pokemonSolid", sans-serif;
   text-shadow: 2px 2px 0 #000;
   letter-spacing: 6px;
   color: var(--rojo);
+}
+.sombra {
+  text-shadow: 2px 2px 0 #000;
 }
 
 .contenedor p {
