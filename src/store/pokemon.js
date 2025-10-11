@@ -37,7 +37,7 @@ const pokemonSlice = createSlice({
         },
         toggleFavoritos: (state, action) =>{
             const pokemon = action.payload;
-            state.favoritos = state.favoritos.filter(fav => fav.id);
+            state.favoritos = state.favoritos.filter(fav => fav && fav.id);
             const esFavorito = state.favoritos.some(fav => fav.id === pokemon.id);
             if (esFavorito) {
                 state.favoritos = state.favoritos.filter(fav => fav.id !== pokemon.id);

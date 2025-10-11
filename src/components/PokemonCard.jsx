@@ -6,7 +6,7 @@ import { useFavoritos } from "../hooks/useFavoritos";
 import { precioPokemon } from "../utils/precioPokemon";
 
 function PokemonCard({ pokemonData }) {
-  const id = pokemonData.url?.split("/")[6];
+  const id = pokemonData?.id;
 
   const { handleFavoritos, esFavorito } = useFavoritos();
 
@@ -29,9 +29,7 @@ function PokemonCard({ pokemonData }) {
       <div className="card-body">
         <h2 className="card-title capitalizado">{pokemonData.name}</h2>
         <p className="card-text">ID: #{id}</p>
-        <p className="precio">{`Precio: ₽${precioPokemon(
-          pokemonData.name
-        )}`}</p>
+        <p className="precio">{`₽${precioPokemon(pokemonData.name)}`}</p>
         <div className="contenedor centrado">
           <Link to={`/perfil/${pokemonData.name}/${id}`}>
             <button className="btn btn-primary rojo">Detalles</button>

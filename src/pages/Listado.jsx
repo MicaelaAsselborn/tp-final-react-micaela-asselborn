@@ -7,8 +7,7 @@ import {
   agregarPokemones,
   resetearPokemones,
   cambiarPagina,
-} from "../store/pokemon";
-
+} from "../store/Pokemon.js";
 import PokemonCard from "../components/PokemonCard";
 
 function Listado() {
@@ -30,8 +29,14 @@ function Listado() {
           `https://pokeapi.co/api/v2/pokemon?limit=${pokemonesPorPagina}&offset=${offset}`
         );
         const data = await response.json();
-
-        dispatch(agregarPokemones(data.results));
+        const pokemonesCompletos = await Promise.all(
+          data.results.map(async (pokemon) => {
+            const response = await fetch(pokemon.url);
+            const pokemonCompleto = await response.json();
+            return pokemonCompleto;
+          })
+        );
+        dispatch(agregarPokemones(pokemonesCompletos));
         dispatch(cargaExitosa());
       } catch (error) {
         dispatch(cargaFallida(error.message));
