@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useFavoritos } from "../hooks/useFavoritos";
+import { useCarrito } from "../hooks/useCarrito.js";
 import { tiposPokemon } from "../utils/tiposPokemon.js";
 import { precioPokemon } from "../utils/precioPokemon.js";
 
@@ -8,6 +9,7 @@ function Perfil() {
   const [pokemonData, setPokemonData] = useState(undefined);
   const { pokemonName, pokemonId } = useParams();
   const { handleFavoritos, esFavorito } = useFavoritos();
+  const { handleCarrito, enCarrito } = useCarrito();
 
   useEffect(() => {
     const pokeApi = async () => {
@@ -36,7 +38,10 @@ function Perfil() {
   if (pokemonData === undefined)
     return (
       <main>
-        <h1>Error al cargar: No se encontraron datos.</h1>
+        <h1>Cargando pokemon...</h1>
+        <div className="spinner-border text-danger" role="status">
+          <span className="visually-hidden">Cargando...</span>
+        </div>
       </main>
     );
   return (
@@ -63,7 +68,12 @@ function Perfil() {
               >
                 {esFavorito(pokemonId) ? "💔 Quitar" : "❤ Favoritos"}
               </button>
-              <button className="hover-green">🛒 Comprar</button>
+              <button
+                className="hover-green"
+                onClick={() => handleCarrito(pokemonData)}
+              >
+                {enCarrito(pokemonId) ? "💸 Devolver" : "🛒 Agregar"}
+              </button>
             </div>
           </div>
           <div>

@@ -30,12 +30,7 @@ function Favoritos() {
         ) : (
           <div className="contenedor margin-Y">
             {favoritos.map((pokemon) => {
-              return (
-                <PokemonCard
-                  key={`${pokemon.name}-${pokemon.id}`}
-                  pokemonData={pokemon}
-                />
-              );
+              return <PokemonCard key={pokemon.id} pokemonData={pokemon} />;
             })}
           </div>
         )}

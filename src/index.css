@@ -340,9 +340,30 @@ btn-primary:active {
 
 /* ESPACIADO  Y ALINEAMIENTO*/
 
+.contenedor-responsive {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 @media (min-width: 1024px) {
   .contenedor-responsive {
-    display: flex;
+    flex-direction: row;
+  }
+  .titulo-responsive {
+    font-size: 6rem;
+    padding-bottom: 2rem;
+  }
+}
+.contenedor-responsive-carrito {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .contenedor-responsive-carrito {
+    flex-direction: row;
+    align-items: start;
   }
   .titulo-responsive {
     font-size: 6rem;

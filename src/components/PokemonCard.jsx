@@ -1,22 +1,18 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 import { useFavoritos } from "../hooks/useFavoritos";
+import { useCarrito } from "../hooks/useCarrito";
 import { precioPokemon } from "../utils/precioPokemon";
 
 //pokemonData viene desde Listado
 function PokemonCard({ pokemonData }) {
   const id = pokemonData.id; //simplificó el ID
 
-  const { handleFavoritos, esFavorito } = useFavoritos(); //Traigo las funciones desde el custom hook
-
-  const [buying, setBuying] = useState(false);
-  const isBuying = () => {
-    setBuying(!buying);
-  };
+  const { handleFavoritos, esFavorito } = useFavoritos(); //Traigo las funciones de useFavoritos
+  const { handleCarrito, enCarrito } = useCarrito(); //Traigo las funciones de useCarrito
 
   //Si pokemonData viene undefined, muestro un spinner
   if (!pokemonData) {
@@ -44,8 +40,8 @@ function PokemonCard({ pokemonData }) {
           </Link>
           <FontAwesomeIcon
             icon={faCartShopping}
-            className={`icono ${buying ? "green" : "white"}`}
-            onClick={isBuying}
+            className={`icono ${enCarrito(id) ? "green" : "white"}`}
+            onClick={() => handleCarrito(pokemonData)}
           />
           <FontAwesomeIcon
             icon={faHeart}

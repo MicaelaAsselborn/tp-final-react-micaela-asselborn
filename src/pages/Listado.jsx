@@ -11,6 +11,7 @@ import PokemonCard from "../components/PokemonCard";
 
 function Listado() {
   const { lista, paginaActual } = useSelector((state) => state.pokemon); //Obtengo los valores globales de lista y pagina
+
   const dispatch = useDispatch();
   const pokemonesPorPagina = 20;
 

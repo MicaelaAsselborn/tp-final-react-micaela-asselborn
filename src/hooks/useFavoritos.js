@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toggleFavoritos } from "../store/Pokemon.js";
+import { toggleFavoritos } from "../store/pokemon.js";
 
 export const useFavoritos = () =>{
     const dispatch = useDispatch();
@@ -11,8 +11,8 @@ export const useFavoritos = () =>{
     };
 
     const esFavorito = (id) =>{
-        //Verifica si el ID ya esta en favoritos (Esto es para el color del icono)
-        return favoritos.some(fav => fav.id == id); 
+        //Verifica si el ID ya esta en favoritos (Esto es para el color del icono y el texto del botón)
+        return favoritos.some(fav => fav.id == id); //Uno es un string y el otro un number, por eso es una comparación no estricta
     };
 
     return {handleFavoritos, esFavorito, favoritos}
