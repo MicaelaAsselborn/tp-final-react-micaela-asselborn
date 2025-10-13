@@ -9,6 +9,7 @@
 
 - 📋 **Listado completo** de Pokémon con paginación
 - ❤️ **Sistema de favoritos** con persistencia en Local Storage
+- 🛒 **Sistema de carrito** con persistencia en Local Storage
 - 📱 **Diseño 100% responsive** con Bootstrap 5
 - 🎨 **Interfaz moderna** con iconos FontAwesome
 - ⚡ **Navegación fluida** con React Router DOM
