@@ -85,7 +85,7 @@ function Perfil() {
     );
   return (
     <main>
-      <div className="alineado">
+      <div className="alineado contenedor-responsive-carrito">
         <Link to="/listado">
           <div className="alineado-izquierdo">
             <button className="button">← Volver al listado</button>
