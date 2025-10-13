@@ -37,8 +37,6 @@ function Perfil() {
       if (response.ok) {
         const data = await response.json();
         navigate(`/perfil/${data.name}/${idAnterior}`);
-      } else {
-        navigate(`/perfil/unknown/${idAnterior}`);
       }
     } catch (error) {
       console.log("Error: ", error);
