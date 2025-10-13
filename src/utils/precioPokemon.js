@@ -1,10 +1,6 @@
-export function precioPokemon(nombre) {
-  let hash = 0;
-  //Itera sobre el nombre de pokemon y obtiene la cantidad de caracteres en su nombre
-  for (let i = 0; i < nombre.length; i++) {
-    hash += nombre.charCodeAt(i);
-  }
-
-  const precio = (hash * 7919 % 1900) + 10000;
-  return precio.toLocaleString('es-AR'); //Esto es para que ponga el punto
+export function precioPokemon(stats) {
+  const suma = stats.reduce((sum, stat) => sum + stat, 0);
+  const precio = suma * 100;
+  
+  return precio.toLocaleString('es-AR');
 }

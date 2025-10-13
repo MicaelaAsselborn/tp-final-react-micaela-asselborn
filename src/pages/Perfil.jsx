@@ -111,7 +111,9 @@ function Perfil() {
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`}
               alt={pokemonName}
             />
-            <p className="precio">{`₽${precioPokemon(pokemonName)}`}</p>
+            <p className="precio">{`₽${precioPokemon(
+              pokemonData.stats.map((stat) => stat.base_stat)
+            )}`}</p>
             <div className="contenedor">
               <button
                 className="hover-red"

@@ -33,7 +33,10 @@ function PokemonCard({ pokemonData }) {
       <div className="card-body">
         <h2 className="card-title capitalizado">{pokemonData.name}</h2>
         <p className="card-text">ID: #{id}</p>
-        <p className="precio">{`₽${precioPokemon(pokemonData.name)}`}</p>
+        <p className="precio">{`₽${precioPokemon(
+          pokemonData.stats?.map((stat) => stat.base_stat) ||
+            "Error al cargar el precio"
+        )}`}</p>
         <div className="contenedor-detalles centrado">
           <Link to={`/perfil/${pokemonData.name}/${id}`}>
             <button className="btn btn-primary rojo">Detalles</button>

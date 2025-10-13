@@ -12,8 +12,9 @@ function Carrito() {
   const dispatch = useDispatch();
 
   const total = carrito.reduce((sum, item) => {
-    const precioTexto = precioPokemon(item.name);
-    const precioNumero = parseInt(precioTexto.replace(/\./g, "")); //Esto elimina el punto del numero
+    const statsNumeros = item.stats.map((stat) => stat.base_stat); //Extraigo los valores de los stats
+    const precioTexto = precioPokemon(statsNumeros); //Calculo el precio basado en eso
+    const precioNumero = parseInt(precioTexto.replace(/\./g, "")); //Le quito el punto
     return sum + precioNumero;
   }, 0);
 
@@ -46,16 +47,20 @@ function Carrito() {
             <h2 className="margin-Y">🛒 Resumen del pedido</h2>
             <div className="contenedor">
               {carrito.map((item) => {
-                return <PokemonCard key={item.name} pokemonData={item} />;
+                return (
+                  <div className="card-carrito">
+                    <PokemonCard key={item.name} pokemonData={item} />
+                  </div>
+                );
               })}
             </div>
           </div>
-          <div class="col card">
+          <div className="col card">
             <h2 className="margin-Y">💳 Información de pago</h2>
             <form className="padding" onSubmit={(e) => e.preventDefault()}>
               <div className="row">
                 <div className="col-md-6 mb-3">
-                  <label for="nombre" className="form-label">
+                  <label htmlFor="nombre" className="form-label">
                     Nombre completo
                   </label>
                   <input
@@ -66,7 +71,7 @@ function Carrito() {
                   />
                 </div>
                 <div className="col-md-6 mb-3">
-                  <label for="email" className="form-label">
+                  <label htmlFor="email" className="form-label">
                     Email
                   </label>
                   <input
@@ -78,7 +83,7 @@ function Carrito() {
                 </div>
               </div>
               <div className="mb-3">
-                <label for="direccion" className="form-label">
+                <label htmlFor="direccion" className="form-label">
                   Dirección de entrega
                 </label>
                 <input
@@ -90,7 +95,7 @@ function Carrito() {
               </div>
               <div className="row">
                 <div className="col-md-6 mb-3">
-                  <label for="tarjeta" className="form-label">
+                  <label htmlFor="tarjeta" className="form-label">
                     Número de tarjeta
                   </label>
                   <input
@@ -102,7 +107,7 @@ function Carrito() {
                   />
                 </div>
                 <div className="col-md-3 mb-3">
-                  <label for="vencimiento" className="form-label">
+                  <label htmlFor="vencimiento" className="form-label">
                     Vencimiento
                   </label>
                   <input
@@ -114,7 +119,7 @@ function Carrito() {
                   />
                 </div>
                 <div className="col-md-3 mb-3">
-                  <label for="cvv" className="form-label">
+                  <label htmlFor="cvv" className="form-label">
                     CVV
                   </label>
                   <input
