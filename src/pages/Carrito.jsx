@@ -1,9 +1,16 @@
 import { useSelector } from "react-redux";
 import PokemonCard from "../components/PokemonCard";
 import { Link } from "react-router-dom";
+import { precioPokemon } from "../utils/precioPokemon";
 
 function Carrito() {
   const { carrito } = useSelector((state) => state.carrito);
+
+  const total = carrito.reduce((sum, item) => {
+    const precioTexto = precioPokemon(item.name);
+    const precioNumero = parseInt(precioTexto.replace(/\./g, ""));
+    return sum + precioNumero;
+  }, 0);
 
   return (
     <main>
@@ -96,7 +103,7 @@ function Carrito() {
               </div>
               <div className="d-grid gap-2 mt-4">
                 <button type="submit" className="btn btn-success btn-lg">
-                  ✅ Realizar Pago - ₽
+                  ✅ Realizar Pago - ₽ {total.toLocaleString("es-AR")}
                 </button>
                 <Link to={"/listado"}>
                   <button type="button" className="btn btn-outline-secondary">
