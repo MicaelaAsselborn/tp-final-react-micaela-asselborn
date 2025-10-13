@@ -9,7 +9,7 @@ const carritoSlice = createSlice({
     initialState,
     reducers:{
         resetearCarrito: (state) => {
-            state.listaCarrito = [] //Vacia el carrito
+            state.carrito = [] //Vacia el carrito
             localStorage.removeItem("pokemonesCarrito"); //Vacia el localStorage
         },
         toggleCart: (state, action) =>{

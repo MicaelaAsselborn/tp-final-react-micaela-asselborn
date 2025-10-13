@@ -183,6 +183,11 @@ header {
   margin-top: 2rem;
 }
 
+.modal-content {
+  background-color: #1a1a1a;
+  color: white;
+}
+
 /* FUENTES */
 
 nav a {
