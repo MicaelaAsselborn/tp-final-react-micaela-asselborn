@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useFavoritos } from "../hooks/useFavoritos";
 import { useCarrito } from "../hooks/useCarrito.js";
 import { tiposPokemon } from "../utils/tiposPokemon.js";
@@ -8,6 +8,7 @@ import { precioPokemon } from "../utils/precioPokemon.js";
 function Perfil() {
   const [pokemonData, setPokemonData] = useState(undefined);
   const { pokemonName, pokemonId } = useParams();
+  const navigate = useNavigate();
   const { handleFavoritos, esFavorito } = useFavoritos();
   const { handleCarrito, enCarrito } = useCarrito();
 
@@ -26,6 +27,44 @@ function Perfil() {
     pokeApi();
     //Si el nombre (extraido de la url) cambia, hace un nuevo fetch
   }, [pokemonName]);
+
+  const irAPokemonAnterior = async () => {
+    const idAnterior = Number(pokemonId) - 1;
+    try {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${idAnterior}`
+      );
+      if (response.ok) {
+        const data = await response.json();
+        navigate(`/perfil/${data.name}/${idAnterior}`);
+      } else {
+        navigate(`/perfil/unknown/${idAnterior}`);
+      }
+    } catch (error) {
+      console.log("Error: ", error);
+      console.log("Pokemon no encontrado, buscando el siguiente...");
+      irAPokemonAnterior();
+    }
+  };
+
+  const irAPokemonSiguiente = async () => {
+    const idSiguiente = Number(pokemonId) + 1;
+    try {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${idSiguiente}`
+      );
+      if (response.ok) {
+        const data = await response.json();
+        navigate(`/perfil/${data.name}/${idSiguiente}`);
+      } else {
+        navigate(`/perfil/unknown/${idSiguiente}`); //Si el ID no existe, te lleva a la página 404.
+      }
+    } catch (error) {
+      console.log("Error: ", error);
+      console.log("Pokemon no encontrado, buscando el siguiente...");
+      irAPokemonSiguiente();
+    }
+  };
 
   useEffect(() => {
     if (pokemonData?.cries?.latest) {
@@ -46,11 +85,25 @@ function Perfil() {
     );
   return (
     <main>
-      <Link to="/listado">
-        <div className="alineado-izquierdo">
-          <button className="button">← Volver al listado</button>
+      <div className="alineado">
+        <Link to="/listado">
+          <div className="alineado-izquierdo">
+            <button className="button">← Volver al listado</button>
+          </div>
+        </Link>
+        <div className="paginacion">
+          <button
+            className="button"
+            onClick={irAPokemonAnterior}
+            disabled={pokemonId === 1}
+          >
+            ← Anterior
+          </button>
+          <button className="button" onClick={irAPokemonSiguiente}>
+            Siguiente →
+          </button>
         </div>
-      </Link>
+      </div>
       <div>
         <h1 className="capitalizado titulo-responsive pokemonSolid">{`#${pokemonId} ${pokemonName}`}</h1>
         <div className="contenedor-responsive">

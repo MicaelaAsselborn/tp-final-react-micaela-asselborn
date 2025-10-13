@@ -13,7 +13,7 @@ function Carrito() {
 
   const total = carrito.reduce((sum, item) => {
     const precioTexto = precioPokemon(item.name);
-    const precioNumero = parseInt(precioTexto.replace(/\./g, ""));
+    const precioNumero = parseInt(precioTexto.replace(/\./g, "")); //Esto elimina el punto del numero
     return sum + precioNumero;
   }, 0);
 

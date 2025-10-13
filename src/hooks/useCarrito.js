@@ -7,7 +7,6 @@ export const useCarrito = () => {
 
     //Funcion que envia la info del Pokemon para despues agregarlo o quitarlo del carrito
     const handleCarrito = (pokemonData) => {
-
         dispatch(toggleCart(pokemonData));
     };
 
