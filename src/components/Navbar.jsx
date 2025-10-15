@@ -30,7 +30,7 @@ function Navbar() {
       <div className={`desktop ${IsOpen ? "menu-desplegado" : "menu-cerrado"}`}>
         <Link to="/" onClick={closeMenu}>
           🏠Inicio{" "}
-          <span className="numNav">
+          <span className={carrito.length >= 1 ? "numNav" : ""}>
             {favoritos.length >= 1 ? favoritos.length : ""}
           </span>
         </Link>
@@ -39,7 +39,7 @@ function Navbar() {
         </Link>
         <Link to="/carrito" onClick={closeMenu}>
           🛒Carrito{" "}
-          <span className="numNav">
+          <span className={carrito.length >= 1 ? "numNav" : ""}>
             {carrito.length >= 1 ? carrito.length : ""}
           </span>
         </Link>

@@ -57,7 +57,13 @@ function Carrito() {
           </div>
           <div className="col card">
             <h2 className="margin-Y">💳 Información de pago</h2>
-            <form className="padding" onSubmit={(e) => e.preventDefault()}>
+            <form
+              className="padding"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handlePago();
+              }}
+            >
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label htmlFor="nombre" className="form-label">
@@ -132,11 +138,7 @@ function Carrito() {
                 </div>
               </div>
               <div className="d-grid gap-2 mt-4">
-                <button
-                  type="submit"
-                  className="btn btn-success btn-lg"
-                  onClick={() => handlePago()}
-                >
+                <button type="submit" className="btn btn-success btn-lg">
                   ✅ Realizar Pago - ₽ {total.toLocaleString("es-AR")}
                 </button>
                 <Link to={"/listado"}>
