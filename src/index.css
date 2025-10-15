@@ -50,6 +50,16 @@ nav {
 .menu-cerrado {
   height: 0;
   font-size: 0;
+  span {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .menu-cerrado {
+    span {
+      display: inline-flex;
+    }
+  }
 }
 
 .mobile {
