@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -7,6 +8,9 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import logo from "../img/logo.png";
 
 function Navbar() {
+  const { favoritos } = useSelector((state) => state.pokemon);
+  const { carrito } = useSelector((state) => state.carrito);
+
   const [IsOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -25,13 +29,19 @@ function Navbar() {
       </Link>
       <div className={`desktop ${IsOpen ? "menu-desplegado" : "menu-cerrado"}`}>
         <Link to="/" onClick={closeMenu}>
-          🏠Inicio
+          🏠Inicio{" "}
+          <span className="numNav">
+            {favoritos.length >= 1 ? favoritos.length : ""}
+          </span>
         </Link>
         <Link to="/listado" onClick={closeMenu}>
           📝Listado
         </Link>
         <Link to="/carrito" onClick={closeMenu}>
-          🛒Carrito
+          🛒Carrito{" "}
+          <span className="numNav">
+            {carrito.length >= 1 ? carrito.length : ""}
+          </span>
         </Link>
         <Link to="/info" onClick={closeMenu}>
           ⚖️Info
